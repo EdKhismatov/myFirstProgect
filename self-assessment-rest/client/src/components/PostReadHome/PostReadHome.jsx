@@ -8,7 +8,7 @@ export default function PostReadHome({homePost, setHomePost}) {
 
   return (
     <div>
-      <Link to="/post">
+      <Link to="/">
         <button>Назад</button>
       </Link>
       <h1>{post.title}</h1>

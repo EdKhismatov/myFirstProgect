@@ -15,9 +15,15 @@ export default function Navbar({ user, setUser }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.left}>
-        <Link to='/'>На главную</Link>
-        <Link to='/post'>написать статью</Link>
-        <Link to='/todo'>Заметки</Link>
+        <Link to="/">На главную</Link>
+        {user?.username ? (
+          <>
+            <Link to="/post">написать статью</Link>
+            <Link to="/todo">Заметки</Link>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <div className={styles.right}>
         {user?.username ? (
@@ -27,15 +33,11 @@ export default function Navbar({ user, setUser }) {
           </>
         ) : (
           <>
-            <Link to='/signin'>Войти</Link>
-            <Link to='/signup'>Регистрация</Link>
+            <Link to="/signin">Войти</Link>
+            <Link to="/signup">Регистрация</Link>
           </>
         )}
       </div>
     </div>
   );
 }
-
-
-
-        

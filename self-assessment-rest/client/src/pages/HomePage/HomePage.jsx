@@ -44,17 +44,19 @@ export default function HomePage({ homePost, setHomePost, user }) {
       <div className={styles.container}>
         {homePost.map((post) => (
           <div className={styles.post} key={post.id}>
-            <img src={post.img} alt={post.title} />
+            <img src={post.img} alt=''/>
             <h2>{post.title}</h2>
             <div className={styles.actions}>
               <Link to={`/${post.id}`}>
                 <button>Читать</button>
               </Link>
+              <div className={styles.icons}>
               <AiFillLike
                 className={styles.iconLike}
                 onClick={() => addLikePostHandler(user.id, post.id)}
               />
               <p>{like[post.id] !== undefined ? like[post.id] : 'Загрузка...'}</p>
+              </div>
               <div className={styles.actions}></div>
             </div>
           </div>
