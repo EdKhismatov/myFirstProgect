@@ -5,14 +5,15 @@ import HomePage from './pages/HomePage/HomePage';
 import SigninPage from './pages/SigninPage/SigninPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import PostPage from './pages/PostPage/PostPage';
+import PostRead from './components/PostRead/PostRead';
 import { useEffect, useState } from 'react';
 import axiosInstance, { setAccessToken } from './axiosInstance';
 import Todo from './pages/Todo/Todo';
 
 function App() {
   const [user, setUser] = useState({});
-
-
+  const [posts, setPost] = useState([]);
+  const [homePost, setHomePost] = useState([]);
   useEffect(() => {
     axiosInstance(`${import.meta.env.VITE_API}/tokens/refresh`).then((res) => {
       setUser(res.data.user);
@@ -27,7 +28,7 @@ function App() {
       children: [
         {
           path: '/',
-          element: <HomePage user={user} />,
+          element: <HomePage user={user} homePost={homePost} setHomePost={setHomePost}/>,
         },
         {
           path: '/signin',
@@ -43,7 +44,11 @@ function App() {
         },
         {
           path: '/post',
-          element: <PostPage  user={user}/>,
+          element: <PostPage  user={user} posts={posts} setPost={setPost}/>,
+        },
+        {
+          path: '/post/:id',
+          element: <PostRead  user={user} posts={posts} setPost={setPost}/>,
         },
       ],
     },

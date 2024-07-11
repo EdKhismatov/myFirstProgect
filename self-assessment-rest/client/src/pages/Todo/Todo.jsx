@@ -42,7 +42,6 @@ export default function Todo({ user }) {
     (async function () {
       if (user?.id) {
         const { data } = await axiosInstance.get(`/api/v1/todo/${user?.id}`);
-        // console.log(data);
         setTodo(data);
       }
     })();
@@ -67,6 +66,8 @@ export default function Todo({ user }) {
   };
   const completedTodoCount = todos.filter((todo) => todo.done).length;
 
+
+  
   return (
     <div>
       <h1>задачи</h1>

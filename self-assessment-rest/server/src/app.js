@@ -7,6 +7,7 @@ const { Todo, User, Post, Like,  } = require('../db/models');
 const express = require('express');
 
 
+
 const app = express();
 const { PORT } = process.env;
 
@@ -23,12 +24,18 @@ app.use(cors(corsConfig));
 
 app.use('/api/v1', apiRouter);
 
-// app.get('/:id', async (req, res) => {
-//   const { id } = req.params;
-//   const response = await User.findByPk(id);
+
+// app.post('/', async (req, res) => {
+//   const { post, user_id, img } = req.body;
+//   const response = await Post.create({ post, user_id, img });
 //   res.json(response);
 // });
 
+// app.get('/post/', async (req, res) => {
+
+//   const response = await Post.findAll();
+//   res.json(response);
+// });
 
 // app.get('/:user_id/post', async (req, res) => {
 //   try {
