@@ -59,24 +59,29 @@
 }
 
 .icon,
-.iconDel {
+.iconLike {
   font-size: 1.8rem;
   cursor: pointer;
   color: lightgrey;
   padding: 0 7px;
   font-size: 1.8rem;
   transition: transform 0.3s;
+
+
 }
 
 .icon:hover,
-.iconDel:hover {
+.iconLike:hover {
   cursor: pointer;
   transform: scale(1.3);
+  
+  
 }
 .icon:hover {
   color: green;
 }
 
-.iconDel:hover {
+.iconLike:hover {
   color: red;
+  
 }

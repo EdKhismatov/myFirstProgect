@@ -1,6 +1,7 @@
 .todoContainer {
-  margin-bottom: 30px;
-  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .todoContainer form {
   display: flex;
@@ -9,7 +10,7 @@
 }
 
 .todoContainer input {
-  width: 45%;
+  width: 500px;
   height: 30px;
   font-size: 1.3rem;
   color: black;

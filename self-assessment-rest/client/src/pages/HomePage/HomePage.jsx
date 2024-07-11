@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-import { RiDeleteBin2Line } from 'react-icons/ri';
-import { AiOutlineContainer } from 'react-icons/ai';
+import { AiFillLike } from 'react-icons/ai';
 import styles from './HomePage.module.css';
 import axiosInstance from '../../axiosInstance';
 import { Link } from 'react-router-dom';
 const { VITE_API } = import.meta.env;
 
-export default function HomePage({homePost, setHomePost, user}) {
-
+export default function HomePage({ homePost, setHomePost, user }) {
   useEffect(() => {
     (async function () {
       if (user?.id) {
@@ -17,24 +15,23 @@ export default function HomePage({homePost, setHomePost, user}) {
     })();
   }, [user]);
 
-  
-return (
-  <>
+  return (
+    <>
       <div className={styles.container}>
         {homePost.map((post) => (
           <div className={styles.post} key={post.id}>
             <img src={post.img} alt={post.title} />
             <h2>{post.title}</h2>
             <div className={styles.actions}>
-              <Link to={`/post/${post.id}`}>
-              <button>Читать</button>
+              <Link to={`/${post.id}`}>
+                <button>Читать</button>
               </Link>
-              <div className={styles.actions}>
-              </div>
+              <AiFillLike className={styles.iconLike} />
+              <div className={styles.actions}></div>
             </div>
           </div>
         ))}
       </div>
     </>
-);
-};
+  );
+}

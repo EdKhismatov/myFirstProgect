@@ -6,6 +6,7 @@ import SigninPage from './pages/SigninPage/SigninPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import PostPage from './pages/PostPage/PostPage';
 import PostRead from './components/PostRead/PostRead';
+import PostReadHome from './components/PostReadHome/PostReadHome';
 import { useEffect, useState } from 'react';
 import axiosInstance, { setAccessToken } from './axiosInstance';
 import Todo from './pages/Todo/Todo';
@@ -49,6 +50,10 @@ function App() {
         {
           path: '/post/:id',
           element: <PostRead  user={user} posts={posts} setPost={setPost}/>,
+        },
+        {
+          path: '/:id',
+          element: <PostReadHome  user={user} homePost={homePost} setHomePost={setHomePost}/>,
         },
       ],
     },
