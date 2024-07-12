@@ -38,13 +38,11 @@ export default function PostPage({ user, posts, setPost }) {
     const { data } = await axiosInstance.get(
       `/api/v1/like/tweets/${id}/likes/users`
     );
-
     data.map(async (like) => {
       await axiosInstance.delete(`/api/v1/like/tweets/${id}/${like.id}/likes`);
     });
     await axiosInstance.delete(`/api/v1/post/${id}`);
     setPost(posts.filter((todo) => todo.id !== id));
-    console.log(id);
   };
 
   return (
@@ -73,6 +71,7 @@ export default function PostPage({ user, posts, setPost }) {
                 />
               </div>
             </div>
+            
           </div>
         ))}
       </div>

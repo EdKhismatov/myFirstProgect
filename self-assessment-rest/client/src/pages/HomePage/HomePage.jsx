@@ -48,7 +48,10 @@ export default function HomePage({ homePost, setHomePost, user, like, setLike })
             <img src={post.img} alt=''/>
             <h2>{post.title}</h2>
             <div className={styles.actions}>
-              <Link to={`/${post.id}`}>
+
+            {user?.username ? (
+          <>
+          <Link to={`/${post.id}`}>
                 <button>Читать</button>
               </Link>
               <div className={styles.icons}>
@@ -66,7 +69,19 @@ export default function HomePage({ homePost, setHomePost, user, like, setLike })
               <FaUserGraduate title='Автор поста' className={styles.userPost}/>
               </Link>
               </div>
-              <div className={styles.actions}></div>
+          </>
+        ) : (  <>
+                <button>Читать</button>
+              <div className={styles.icons}>
+                <p>{like[post.id] !== undefined ? like[post.id] : ''}</p>
+              <AiFillLike
+                title='лайкнуть'
+                className={styles.iconLike}
+              />
+              <FaUser title='пользователи которые поставили лайк' className={styles.iconUser}/>
+              <FaUserGraduate title='Автор поста' className={styles.userPost}/>
+              </div>
+          </>  )}
             </div>
           </div>
         ))}
