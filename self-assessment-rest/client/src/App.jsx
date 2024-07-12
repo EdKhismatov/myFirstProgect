@@ -12,6 +12,7 @@ import axiosInstance, { setAccessToken } from './axiosInstance';
 import Todo from './pages/Todo/Todo';
 import UsersLikePost from './components/UsersLikePost/UsersLikePost';
 import AuthorPost from './components/AuthorPost/AuthorPost';
+import PostUpdate from './pages/PostUpdate/PostUpdate';
 
 function App() {
   const [user, setUser] = useState({});
@@ -36,25 +37,6 @@ function App() {
       }
     })();
   }, [user]);
-
-
-  // HomePage непонятно))
-  // useEffect(() => {
-  //   (async function () {
-  //     if (user?.id) {
-  //       const { data } = await axiosInstance.get(`/api/v1/home/`);
-  //       setHomePost(data);
-  //       const initialLikes = {};
-  //       for (const post of data) {
-  //         const { data: likesData } = await axiosInstance.get(`/api/v1/like/tweets/${post.id}/likes/users`);
-  //         initialLikes[post.id] = likesData.length;
-  //       }
-  //       setLike(initialLikes);
-  //     }
-  //   })();
-  // }, [user, setHomePost]);
-
-
 
   const router = createBrowserRouter([
     {
@@ -96,6 +78,10 @@ function App() {
         {
           path: '/author/:id',
           element: <AuthorPost  user={user} homePost={homePost} setHomePost={setHomePost}/>,
+        },
+        {
+          path: '/update/:id',
+          element: <PostUpdate  user={user} homePost={homePost} setHomePost={setHomePost} setPost={setPost}/>,
         },
       ],
     },

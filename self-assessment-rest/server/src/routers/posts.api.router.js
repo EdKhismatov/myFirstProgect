@@ -45,4 +45,26 @@ router.get('/tweets/:post_id/users', async (req, res) => {
 });
 
 
+router.patch('/update/:id', async (req, res) => {
+  try {
+    // const { id } = req.params;
+    const { post, title, id } = req.body;
+    console.log(post, title, id, '********' )
+    if (Number(id)) {
+      const entrie = await Post.findOne({ where: { id } });
+      if (post && title) {
+        await entrie.update({ post, title });
+        res.json(entrie);
+      } else {
+        res.status(400).send('Нет необходимых данных для изменений');
+      }
+    } else {
+      res.status(400).send('Запись по такому id не найдена');
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
+
 module.exports = router;

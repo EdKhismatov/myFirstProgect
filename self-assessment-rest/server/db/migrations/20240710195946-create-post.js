@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       post: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       title: {
         type: Sequelize.STRING

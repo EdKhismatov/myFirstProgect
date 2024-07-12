@@ -23,16 +23,6 @@ export default function PostPage({ user, posts, setPost }) {
     setPost([...posts, data]);
   };
 
-  // useEffect(() => {
-  //   (async function () {
-  //     if (user?.id) {
-  //       const { data } = await axiosInstance.get(
-  //         `${import.meta.env.VITE_API}/post/${user?.id}`
-  //       );
-  //       setPost(data);
-  //     }
-  //   })();
-  // }, [user]);
 
   const deleteTodoHandler = async (id) => {
     const { data } = await axiosInstance.get(
@@ -60,10 +50,12 @@ export default function PostPage({ user, posts, setPost }) {
                 <button>Читать</button>
               </Link>
               <div className={styles.actions}>
+              <Link to={`/update/${post.id}`}>
                 <AiOutlineContainer
                   title="Редактировать"
                   className={styles.icon}
                 />
+                </Link>
                 <RiDeleteBin2Line
                   title="Удалить"
                   className={styles.iconDel}
