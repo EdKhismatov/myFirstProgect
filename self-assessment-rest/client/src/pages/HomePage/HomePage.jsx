@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AiFillLike } from 'react-icons/ai';
+import { FaUserGraduate } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import styles from './HomePage.module.css';
 import axiosInstance from '../../axiosInstance';
@@ -51,12 +52,17 @@ export default function HomePage({ homePost, setHomePost, user, like, setLike })
                 <button>Читать</button>
               </Link>
               <div className={styles.icons}>
+                <p>{like[post.id] !== undefined ? like[post.id] : ''}</p>
               <AiFillLike
+                title='лайкнуть'
                 className={styles.iconLike}
                 onClick={() => addLikePostHandler(user.id, post.id)}
               />
-              <p>{like[post.id] !== undefined ? like[post.id] : ''}</p>
-              <FaUser className={styles.iconUser}/>
+
+              <Link to={`/users/${post.id}`}>
+              <FaUser title='пользователи которые поставили лайк' className={styles.iconUser}/>
+              </Link>
+              <FaUserGraduate title='Автор поста' className={styles.userPost}/>
               </div>
               <div className={styles.actions}></div>
             </div>

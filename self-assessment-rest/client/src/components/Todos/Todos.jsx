@@ -2,7 +2,6 @@ import styles from './Todos.module.css';
 import { RiTodoFill, RiDeleteBin2Line } from 'react-icons/ri';
 import { FaCheck } from 'react-icons/fa';
 function Todos({ todo, deleteTodo, toggleTodo }) {
-  // console.log(todo, 'тудушка')
   return (
     <div className={`${styles.todo} ${todo.done ? styles.completedTodo : ''}`}>
       <RiTodoFill className={styles.todoIcon} />

@@ -110,3 +110,22 @@
 .iconUser {
   color: black;
 }
+
+.button:hover {
+  background-color: #555;
+}
+
+.userPost {
+  cursor: pointer;
+  color: #000000; /* Сероватый цвет по умолчанию */
+  transition: color 0.3s ease; /* Плавный переход цвета */
+  display: flex;
+  align-items: center;
+}
+
+.userPost:hover {
+  color: rgb(25, 88, 53); /* Красный цвет при наведении */
+  font-size: 1.1rem;
+  transform: scale(1.3);
+  transition: transform 0.3s;
+}

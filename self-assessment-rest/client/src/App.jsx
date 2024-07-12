@@ -10,6 +10,7 @@ import PostReadHome from './components/PostReadHome/PostReadHome';
 import { useEffect, useState } from 'react';
 import axiosInstance, { setAccessToken } from './axiosInstance';
 import Todo from './pages/Todo/Todo';
+import UsersLikePost from './components/UsersLikePost/UsersLikePost';
 
 function App() {
   const [user, setUser] = useState({});
@@ -86,6 +87,10 @@ function App() {
         {
           path: '/:id',
           element: <PostReadHome  user={user} homePost={homePost} setHomePost={setHomePost}/>,
+        },
+        {
+          path: '/users/:id',
+          element: <UsersLikePost  user={user} homePost={homePost} setHomePost={setHomePost}/>,
         },
       ],
     },
