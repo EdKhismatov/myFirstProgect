@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
 import { AiFillLike } from 'react-icons/ai';
+import { FaUser } from "react-icons/fa";
 import styles from './HomePage.module.css';
 import axiosInstance from '../../axiosInstance';
 import { Link } from 'react-router-dom';
 const { VITE_API } = import.meta.env;
 
 // все статьи
-export default function HomePage({ homePost, setHomePost, user }) {
-  const [like, setLike] = useState({});
+export default function HomePage({ homePost, setHomePost, user, like, setLike }) {
 
   useEffect(() => {
     (async function () {
       if (user?.id) {
         const { data } = await axiosInstance.get(`/api/v1/home/`);
         setHomePost(data);
-        // Инициализация состояния лайков для каждого поста
         const initialLikes = {};
         for (const post of data) {
           const { data: likesData } = await axiosInstance.get(`/api/v1/like/tweets/${post.id}/likes/users`);
@@ -24,6 +23,7 @@ export default function HomePage({ homePost, setHomePost, user }) {
       }
     })();
   }, [user, setHomePost]);
+
 
   const collLike = async (post_id) => {
     const { data } = await axiosInstance.get(`/api/v1/like/tweets/${post_id}/likes/users`);
@@ -55,7 +55,8 @@ export default function HomePage({ homePost, setHomePost, user }) {
                 className={styles.iconLike}
                 onClick={() => addLikePostHandler(user.id, post.id)}
               />
-              <p>{like[post.id] !== undefined ? like[post.id] : 'Загрузка...'}</p>
+              <p>{like[post.id] !== undefined ? like[post.id] : ''}</p>
+              <FaUser className={styles.iconUser}/>
               </div>
               <div className={styles.actions}></div>
             </div>

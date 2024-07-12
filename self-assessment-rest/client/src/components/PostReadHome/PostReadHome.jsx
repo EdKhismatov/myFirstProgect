@@ -11,8 +11,8 @@ export default function PostReadHome({homePost, setHomePost}) {
       <Link to="/">
         <button>Назад</button>
       </Link>
-      <h1>{post.title}</h1>
-      <h1>{post.post}</h1>
+      <h1>{post?.title}</h1>
+      <h1>{post?.post}</h1>
     </div>
   );
 }

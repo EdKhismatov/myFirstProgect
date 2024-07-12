@@ -24,7 +24,7 @@ export default function TodoForm({ addPost, setGif }) {
   return (
     <form onSubmit={onSubmitHandlet} className={styles.todoContainer}>
       <input
-        value={text.title}
+        defaultValue={text?.title}
         onChange={(e) =>
           setText((prev) => ({ ...prev, title: e.target.value }))
         }
@@ -33,7 +33,7 @@ export default function TodoForm({ addPost, setGif }) {
         //   className={styles.input}
       />
       <input
-        value={text.text}
+        defaultValue={text?.text}
         onChange={(e) => setText((prev) => ({ ...prev, text: e.target.value }))}
         placeholder="Текст"
         //   className={styles.input}

@@ -6,8 +6,6 @@ const morgan = require('morgan');
 const { Todo, User, Post, Like,  } = require('../db/models');
 const express = require('express');
 
-
-
 const app = express();
 const { PORT } = process.env;
 
@@ -73,6 +71,23 @@ app.use('/api/v1', apiRouter);
 //     res.status(500).send(error.message);
 //   }
 // });
+
+app.post('/tweets/:post_id/:user_id/likes', async (req, res) => {
+  try {
+    const { user_id, post_id } = req.params;
+    console.log(user_id, post_id, 'так так')
+    const like = await Like.findOne({ where: { user_id, post_id } });
+    if (like) {
+      await like.destroy({ user_id, post_id });
+      res.status(200).send('Удалилось');
+    } else {
+      res.status(200).send('ok');
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
 
 
 app.listen(PORT, () => {

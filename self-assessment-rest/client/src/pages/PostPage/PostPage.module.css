@@ -76,12 +76,6 @@
   background-color: #0056b3; /* Темно-синий цвет при наведении */
 }
 
-/* Стиль для текста лайков */
-.actions p {
-  margin: 0; /* Сброс отступов */
-  color: #555; /* Темно-серый цвет текста */
-  font-size: 1em; /* Размер текста */
-}
 
 .icons {
   display: flex;
@@ -102,7 +96,7 @@
 .icon:hover,
 .iconDel:hover {
   cursor: pointer;
-  transform: scale(1.3);
+  transform: scale(1.5);
 }
 .icon:hover {
   color: green;

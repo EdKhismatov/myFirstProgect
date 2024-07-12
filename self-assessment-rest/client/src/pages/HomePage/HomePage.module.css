@@ -58,14 +58,14 @@
 /* Стиль для иконки лайка */
 .iconLike {
   cursor: pointer;
-  color: #888; /* Сероватый цвет по умолчанию */
+  color: #000000; /* Сероватый цвет по умолчанию */
   transition: color 0.3s ease; /* Плавный переход цвета */
   display: flex;
   align-items: center;
 }
 
 .iconLike:hover {
-  color: red;/* Красный цвет при наведении */
+  color: red; /* Красный цвет при наведении */
   font-size: 1.1rem;
   transform: scale(1.3);
   transition: transform 0.3s;
@@ -97,4 +97,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  
+}
+
+.iconUser:hover {
+  color: rgb(0, 4, 255); /* Красный цвет при наведении */
+  font-size: 1.1rem;
+  transform: scale(1.3);
+  transition: transform 0.3s;
+}
+
+.iconUser {
+  color: black;
 }

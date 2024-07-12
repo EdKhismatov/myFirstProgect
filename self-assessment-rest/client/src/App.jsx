@@ -15,12 +15,44 @@ function App() {
   const [user, setUser] = useState({});
   const [posts, setPost] = useState([]);
   const [homePost, setHomePost] = useState([]);
+  const [like, setLike] = useState({});
+
   useEffect(() => {
     axiosInstance(`${import.meta.env.VITE_API}/tokens/refresh`).then((res) => {
       setUser(res.data.user);
       setAccessToken(res.data.accessToken);
     });
   }, []);
+
+  useEffect(() => {
+    (async function () {
+      if (user?.id) {
+        const { data } = await axiosInstance.get(
+          `${import.meta.env.VITE_API}/post/${user?.id}`
+        );
+        setPost(data);
+      }
+    })();
+  }, [user]);
+
+
+  // HomePage непонятно))
+  // useEffect(() => {
+  //   (async function () {
+  //     if (user?.id) {
+  //       const { data } = await axiosInstance.get(`/api/v1/home/`);
+  //       setHomePost(data);
+  //       const initialLikes = {};
+  //       for (const post of data) {
+  //         const { data: likesData } = await axiosInstance.get(`/api/v1/like/tweets/${post.id}/likes/users`);
+  //         initialLikes[post.id] = likesData.length;
+  //       }
+  //       setLike(initialLikes);
+  //     }
+  //   })();
+  // }, [user, setHomePost]);
+
+
 
   const router = createBrowserRouter([
     {
@@ -29,7 +61,7 @@ function App() {
       children: [
         {
           path: '/',
-          element: <HomePage user={user} homePost={homePost} setHomePost={setHomePost}/>,
+          element: <HomePage like={like} setLike={setLike} user={user} homePost={homePost} setHomePost={setHomePost}/>,
         },
         {
           path: '/signin',

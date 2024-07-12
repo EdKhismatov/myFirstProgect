@@ -23,21 +23,28 @@ export default function PostPage({ user, posts, setPost }) {
     setPost([...posts, data]);
   };
 
-  useEffect(() => {
-    (async function () {
-      if (user?.id) {
-        const { data } = await axiosInstance.get(
-          `${import.meta.env.VITE_API}/post/${user?.id}`
-        );
-        setPost(data);
-      }
-    })();
-  }, [user]);
-  // console.log(posts);
+  // useEffect(() => {
+  //   (async function () {
+  //     if (user?.id) {
+  //       const { data } = await axiosInstance.get(
+  //         `${import.meta.env.VITE_API}/post/${user?.id}`
+  //       );
+  //       setPost(data);
+  //     }
+  //   })();
+  // }, [user]);
 
   const deleteTodoHandler = async (id) => {
+    const { data } = await axiosInstance.get(
+      `/api/v1/like/tweets/${id}/likes/users`
+    );
+
+    data.map(async (like) => {
+      await axiosInstance.delete(`/api/v1/like/tweets/${id}/${like.id}/likes`);
+    });
     await axiosInstance.delete(`/api/v1/post/${id}`);
     setPost(posts.filter((todo) => todo.id !== id));
+    console.log(id);
   };
 
   return (
@@ -52,7 +59,7 @@ export default function PostPage({ user, posts, setPost }) {
             <h2>{post.title}</h2>
             <div className={styles.actions}>
               <Link to={`/post/${post.id}`}>
-              <button>Читать</button>
+                <button>Читать</button>
               </Link>
               <div className={styles.actions}>
                 <AiOutlineContainer className={styles.icon} />
