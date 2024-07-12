@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import axiosInstance, { setAccessToken } from './axiosInstance';
 import Todo from './pages/Todo/Todo';
 import UsersLikePost from './components/UsersLikePost/UsersLikePost';
+import AuthorPost from './components/AuthorPost/AuthorPost';
 
 function App() {
   const [user, setUser] = useState({});
@@ -91,6 +92,10 @@ function App() {
         {
           path: '/users/:id',
           element: <UsersLikePost  user={user} homePost={homePost} setHomePost={setHomePost}/>,
+        },
+        {
+          path: '/author/:id',
+          element: <AuthorPost  user={user} homePost={homePost} setHomePost={setHomePost}/>,
         },
       ],
     },

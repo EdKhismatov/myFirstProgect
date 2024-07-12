@@ -62,7 +62,9 @@ export default function HomePage({ homePost, setHomePost, user, like, setLike })
               <Link to={`/users/${post.id}`}>
               <FaUser title='пользователи которые поставили лайк' className={styles.iconUser}/>
               </Link>
+              <Link to={`/author/${post.id}`}>
               <FaUserGraduate title='Автор поста' className={styles.userPost}/>
+              </Link>
               </div>
               <div className={styles.actions}></div>
             </div>

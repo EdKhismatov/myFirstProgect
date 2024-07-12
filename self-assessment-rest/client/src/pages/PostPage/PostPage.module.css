@@ -58,9 +58,6 @@
   border-top: 1px solid #e0e0e0; /* Граница сверху */
 }
 
-
-
-
 /* Стиль для кнопки чтения */
 .actions button {
   background-color: #007bff; /* Синий фон для кнопки */
@@ -76,7 +73,6 @@
   background-color: #0056b3; /* Темно-синий цвет при наведении */
 }
 
-
 .icons {
   display: flex;
   flex-wrap: wrap;
@@ -85,11 +81,11 @@
 
 .icon,
 .iconDel {
-  font-size: 1.8rem;
+  font-size: 2rem;
   cursor: pointer;
   color: rgb(131, 83, 83);
   padding: 0 7px;
-  font-size: 1.8rem;
+
   transition: transform 0.3s;
 }
 

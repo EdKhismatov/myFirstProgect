@@ -15,11 +15,11 @@ export default function Navbar({ user, setUser }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.left}>
-        <Link to="/">На главную</Link>
+        <Link to="/" className={styles.word}>На главную</Link>
         {user?.username ? (
           <>
-            <Link to="/post">написать статью</Link>
-            <Link to="/todo">Заметки</Link>
+            <Link to="/post" className={styles.word}>Написать статью</Link>
+            <Link to="/todo" className={styles.word}>Заметки</Link>
           </>
         ) : (
           <></>
@@ -28,13 +28,13 @@ export default function Navbar({ user, setUser }) {
       <div className={styles.right}>
         {user?.username ? (
           <>
-            <Link>{user.username}</Link>
-            <Link onClick={logoutHandler}>Выйти</Link>
+            <Link className={styles.word}>{user.username}</Link>
+            <Link onClick={logoutHandler} className={styles.word}>Выйти</Link>
           </>
         ) : (
           <>
-            <Link to="/signin">Войти</Link>
-            <Link to="/signup">Регистрация</Link>
+            <Link to="/signin" className={styles.word}>Войти</Link>
+            <Link to="/signup" className={styles.word}>Регистрация</Link>
           </>
         )}
       </div>

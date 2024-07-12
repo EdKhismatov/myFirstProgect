@@ -70,7 +70,7 @@ export default function Todo({ user }) {
   
   return (
     <div>
-      <h1>задачи</h1>
+      <h1 >Заметки</h1>
       <TodoForm setTodo={setTodo} addTodo={addTodoHandler} />
       {todos.length > 0 && (
         <TodosActions

@@ -62,8 +62,12 @@ export default function PostPage({ user, posts, setPost }) {
                 <button>Читать</button>
               </Link>
               <div className={styles.actions}>
-                <AiOutlineContainer className={styles.icon} />
+                <AiOutlineContainer
+                  title="Редактировать"
+                  className={styles.icon}
+                />
                 <RiDeleteBin2Line
+                  title="Удалить"
                   className={styles.iconDel}
                   onClick={() => deleteTodoHandler(post.id)}
                 />

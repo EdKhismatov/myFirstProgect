@@ -25,3 +25,16 @@
   display: flex;
   justify-content: space-between;
 }
+
+
+.word {
+  font-size: 20px;
+}
+
+.word:hover {
+  color: var(--background-color);
+  background-color: var(--primary-color);
+  border-color: var(--hover-color);
+  box-shadow: 0 6px 8px var(--shadow-color);
+  transform: translateY(-2px);
+}
